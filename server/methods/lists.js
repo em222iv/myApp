@@ -4,7 +4,7 @@ Meteor.methods({
         console.log("2");
         Lists.insert({
             title: "Untitled..",
-            author: "Author",
+            author: Meteor.user().username,
             createdAt: new Date() // current time
         });
     },

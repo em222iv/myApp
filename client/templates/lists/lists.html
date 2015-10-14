@@ -5,12 +5,11 @@
 
     {{#each lists}}
 
-
-        <a href="/lists/{{_id}}">show</a>
         <form class="ui form">
+            <a href="/lists/{{_id}}">show</a>
             <a class="ui circular google plus icon button  remove-list-element">remove</a>
-
             <input id="list-title" class="list-title-update" type="text" placeholder="{{title}}">
+            created by: {{author}}
         </form>
 
     {{else}}

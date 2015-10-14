@@ -1,0 +1,15 @@
+<template name="ingredients">
+
+    <form class="">
+        <input id="name" type="text" placeholder="Add...">
+        <a href="#" id="ingredient-add" >Add</a>
+    </form>
+    {{#each ingredients}}
+
+        <div class="ui mini button remove-ingredient">Rem</div>
+        <div> <input id="list-title" class="ingredient-title-update" type="text" placeholder="{{title}}"></div>
+
+    {{else}}
+        No Lists
+    {{/each}}
+</template>

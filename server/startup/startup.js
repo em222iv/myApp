@@ -3,6 +3,7 @@
 // ***************************************************************
 
 Meteor.startup(function () {
+    //Ingredients.remove({});
     //var globalObject=Meteor.isClient?window:global;
     //for(var property in globalObject){
     //    var object=globalObject[property];
