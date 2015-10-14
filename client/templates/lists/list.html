@@ -1,0 +1,18 @@
+<template name="list">
+    {{#if isSubReady}}
+        {{#with list}}
+            <h2>List: {{title}}</h2>
+            {{#each ingredients}}
+                <a class="header">{{name}}</a>
+
+            {{else}}
+                No Ingredients
+            {{/each}}
+        {{/with}}
+    {{else}}
+        loading...
+    {{/if}}
+
+
+
+</template>

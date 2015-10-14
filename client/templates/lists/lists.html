@@ -1,0 +1,20 @@
+<template name="lists">
+
+    <a id="new-list" href="#" class="ui bottom left attached teal label">Add List</a>
+    <!--<a class="ui circular violet icon button" href="{{pathFor 'list' }}" ></a>-->
+
+    {{#each lists}}
+
+
+        <a href="/lists/{{_id}}">show</a>
+        <form class="ui form">
+            <a class="ui circular google plus icon button  remove-list-element">remove</a>
+
+            <input id="list-title" class="list-title-update" type="text" placeholder="{{title}}">
+        </form>
+
+    {{else}}
+        No Lists
+    {{/each}}
+
+</template>
