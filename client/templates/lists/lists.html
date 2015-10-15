@@ -1,19 +1,23 @@
 <template name="lists">
+    <div class="lists">
+        <a id="new-list" href="#" class="ui bottom left attached teal label">Add List</a>
+        <ul id="editable">
+            {{#each lists}}
+             <li class="button waves-float waves-button waves-effect waves-ripple">
+                {{title}}<i>{{index}}</i>
+                <id>{{index}}</id>
 
-    <a id="new-list" href="#" class="ui bottom left attached teal label">Add List</a>
-    <!--<a class="ui circular violet icon button" href="{{pathFor 'list' }}" ></a>-->
+                <form>
+                    <a href="/lists/{{_id}}">show</a>
+                    <a class="remove-list-element">remove</a>
+                    <input type="text" class="list-title-update" placeholder="{{title}}">
+                    created by: {{author}}
+                </form>
 
-    {{#each lists}}
-
-        <form class="ui form">
-            <a href="/lists/{{_id}}">show</a>
-            <a class="ui circular google plus icon button  remove-list-element">remove</a>
-            <input id="list-title" class="list-title-update" type="text" placeholder="{{title}}">
-            created by: {{author}}
-        </form>
-
-    {{else}}
-        No Lists
-    {{/each}}
-
+                </li>
+            {{else}}
+                No Lists
+            {{/each}}
+        </ul>
+    </div>
 </template>

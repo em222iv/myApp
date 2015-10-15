@@ -2,8 +2,9 @@
         <header>
             {{> Template.dynamic template=header}}
         </header>
-
-        {{> Template.dynamic template=main}}
+        {{#momentum plugin='flow-router'}}
+            {{> Template.dynamic template=main}}
+        {{/momentum}}
 
         <footer>
             {{> Template.dynamic template=footer}}

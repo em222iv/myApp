@@ -2,7 +2,6 @@
 // LISTS INDEX
 // -------------------------------------------------------
 Meteor.publish('lists', function() {
-  console.log('server');
   return Lists.find();
 });
 

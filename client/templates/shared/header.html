@@ -1,9 +1,22 @@
 <template name="header">
 <h1>header</h1>
-    <a class="item" href="{{pathFor 'home' }}">home</a>
-    <a class="item" href="{{pathFor 'about' }}">about</a>
-    <a class="item" href="{{pathFor 'lists' }}">lists</a>
-    <a class="item" href="{{pathFor 'ingredients' }}">ingredients</a>
+    <!--<a class="item" href="{{pathFor 'home' }}">home</a>-->
+    <!--<a class="item" href="{{pathFor 'about' }}">about</a>-->
+    <!--<a class="item" href="{{pathFor 'lists' }}">lists</a>-->
+    <!--<a class="item" href="{{pathFor 'ingredients' }}">ingredients</a>-->
+
+    {{#contentWrapper}}
+        <div>
+            <a href="/lists" class="btn">lists</a>
+        </div>
+        <div>
+            <a href="/" class="btn">home</a>
+        </div>
+        <div>
+            <a href="/about" class="btn">about</a>
+        </div>
+    {{/contentWrapper}}
+
     {{#if currentUser}}
 
         <p>Welcome {{currentUser.username}}! You're logged in!</p>

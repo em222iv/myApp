@@ -1,8 +1,8 @@
 Meteor.methods({
     insertList:function() {
         // Insert a list into the collection
-        console.log("2");
         Lists.insert({
+            index: Lists.find().fetch().length,
             title: "Untitled..",
             author: Meteor.user().username,
             createdAt: new Date() // current time
