@@ -8,5 +8,8 @@ Transitioner.setTransitions({
     'lists->about': 'right-to-left',
     'about->lists': 'left-to-right',
 
+    'lists->ingredients': 'right-to-left',
+    'ingredients->lists': 'left-to-right',
+
     'default': 'fade'
 });

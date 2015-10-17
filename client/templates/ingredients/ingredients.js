@@ -1,3 +1,13 @@
+Template.ingredients.rendered = function() {
+  $("#search").attr("class","insertIngredient");
+  $("#search").attr("index","ingredients");;
+  //console.log($("#search"));
+  var instance = EasySearch.getComponentInstance(
+      { id: 'search', index: 'lists' }
+  );
+  instance.clear();
+};
+
 
 Template.ingredients.helpers({
   ingredients: function(){
@@ -6,11 +16,11 @@ Template.ingredients.helpers({
 });
 
 Template.ingredients.events({
-  "click #ingredient-add": function (event) {
+  "click .addItem": function (event) {
     // Prevent default browser form submit
     event.preventDefault();
-    console.log(Meteor.call("insertIngredient",document.getElementById("name").value));
-
+    console.log($("#search").value);
+    Meteor.call("insertIngredient",$("#search").value);
   },
   "click .remove-ingredient": function (event) {
     // Prevent default browser form submit

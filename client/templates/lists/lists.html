@@ -1,22 +1,48 @@
 <template name="lists">
     <div class="lists">
-        <a id="new-list" href="#" class="ui bottom left attached teal label">Add List</a>
-        <ul id="editable">
-            {{#each lists}}
-             <li class="button waves-float waves-button waves-effect waves-ripple">
-                {{title}}<i>{{index}}</i>
-                <id>{{index}}</id>
 
-                <form>
-                    <a href="/lists/{{_id}}">show</a>
-                    <a class="remove-list-element">remove</a>
-                    <input type="text" class="list-title-update" placeholder="{{title}}">
-                    created by: {{author}}
-                </form>
+        {{#ifEsIsSearching index="lists" id="search"}}
+            loading..
+        {{/ifEsIsSearching}}
 
+        <!--ifisempty-->
+
+            <!-- show all -->
+
+        <!--else-->
+
+            <!-- show searchhits    -->
+
+        <!--endif-->
+
+        {{#ifEsHasNoResults index="lists" id="search" logic="OR" }}
+            <div class="no-results">No results found!</div>
+        {{/ifEsHasNoResults}}
+
+        <ul id="searchLists">
+            {{#esEach index="lists" id="search"}}
+                <li>
+                    {{title}}<i>{{index}}</i>
+                    <form>
+                        <a href="/lists/{{_id}}">show</a>
+                        <a class="remove-list-element">remove</a>
+                        <input type="text" class="list-title-update" placeholder="{{title}}">
+                        created by: {{author}}
+                    </form>
                 </li>
-            {{else}}
-                No Lists
+            {{/esEach}}
+        </ul>
+        <ul id="allLists">
+            {{#each lists}}
+                <li>
+                    {{title}}<i>{{index}}</i>
+                    <form>
+                        <a href="/lists/{{_id}}">show</a>
+                        <a class="remove-list-element">remove</a>
+                        <input type="text" class="list-title-update" placeholder="{{title}}">
+                        created by: {{author}}
+                    </form>
+                </li>
             {{/each}}
         </ul>
     </div>

@@ -1,9 +1,9 @@
 Meteor.methods({
-    insertList:function() {
+    insertList:function(listName) {
         // Insert a list into the collection
         Lists.insert({
             index: Lists.find().fetch().length,
-            title: "Untitled..",
+            title: listName,
             author: Meteor.user().username,
             createdAt: new Date() // current time
         });

@@ -1,0 +1,26 @@
+<template name="swipeMenu">
+    <div class="menu">
+        <div class="menu-inner">
+            {{#contentWrapper}}
+                <div>
+                    <a href="{{pathFor 'home' }}" class="btn">home</a>
+                </div>
+                <div>
+                    <a href="{{pathFor 'lists' }}" class="btn">lists</a>
+                </div>
+                <div>
+                    <a href="{{pathFor 'ingredients' }}" class="btn">ingredients</a>
+                </div>
+                <div>
+                    <a href="/about" class="btn">about</a>
+                </div>
+                <div>
+                    <a href="#" class="logout">Logout</a>
+                </div>
+            {{/contentWrapper}}
+        </div>
+        <svg class="bg" height="100%" viewBox="0 0 100 100">
+            <path d="M0,0C0,0,0,100,0,100C0,100,0,100,0,100C0,60,0,0,0,0C0,0,0,0,0,0"/>
+        </svg>
+    </div>
+</template>

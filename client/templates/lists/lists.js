@@ -1,17 +1,26 @@
 Template.lists.rendered = function() {
-  Waves.init();
 
-  var editableList = Sortable.create(editable, {
-    filter: '.js-remove',
-    onFilter: function (evt) {
-      //var el = editableList.closest(evt.item); // get dragged item
-      //el && el.parentNode.removeChild(el);
-    },
-    onStart: function (/**Event*/evt) {
-    },
-    onEnd: function (/**Event*/evt) {
-      console.log(evt);
-    },
+  $("#search").attr("class","insertList");
+  $("#search").attr("index","lists");
+
+  var instance = EasySearch.getComponentInstance(
+      { id: 'search', index: 'lists' }
+  );
+  instance.clear();
+
+  var editableList1 = Sortable.create(allLists, {
+    group: {
+      name:"allLists",
+      put: ['searchLists'],
+      pull: 'pull'
+  }
+  });
+  var editableList2 = Sortable.create(searchLists, {
+    group:{
+      name: 'searchLists',
+      put: ['allLists'],
+      pull: 'pull'
+    }
   });
 };
 
@@ -22,11 +31,6 @@ Template.lists.helpers({
 });
 
 Template.lists.events({
-  "click #new-list": function (event) {
-    // Prevent default browser form submit
-    event.preventDefault();
-    Meteor.call("insertList");
-  },
   "click .remove-list-element": function (event) {
     // Prevent default browser form submit
     event.preventDefault();
@@ -36,7 +40,3 @@ Template.lists.events({
     Meteor.call("updateListTitle", this._id,event.target.value);
   }
 });
-
-
-
-

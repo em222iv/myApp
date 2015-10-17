@@ -1,15 +1,12 @@
 <template name="ingredients">
+    <div class="ingredients">
+        {{#each ingredients}}
 
-    <form class="">
-        <input id="name" type="text" placeholder="Add...">
-        <a href="#" id="ingredient-add" >Add</a>
-    </form>
-    {{#each ingredients}}
+            <div class="ui mini button remove-ingredient">Rem</div>
+            <div> <input id="list-title" class="ingredient-title-update" type="text" placeholder="{{title}}"></div>
 
-        <div class="ui mini button remove-ingredient">Rem</div>
-        <div> <input id="list-title" class="ingredient-title-update" type="text" placeholder="{{title}}"></div>
-
-    {{else}}
-        No Lists
-    {{/each}}
+        {{else}}
+            No Ingredients
+        {{/each}}
+    </div>
 </template>

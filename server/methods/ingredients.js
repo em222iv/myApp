@@ -1,9 +1,9 @@
 Meteor.methods({
-    insertIngredient:function(name) {
+    insertIngredient:function(ingredient) {
         // Insert a list into the collection
-        console.log(name);
+        console.log('2');
         Ingredients.insert({
-            title: name,
+            title: ingredient,
             createdAt: new Date(),
         });
     },
