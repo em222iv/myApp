@@ -52,7 +52,8 @@ Template.lists.events({
     event.preventDefault();
     Meteor.call("removeList", this._id);
   },
-  'input .list-title-update': function (event) {
+  'blur .list-title-update': function (event) {
+    console.log("blurred");
     Meteor.call("updateListTitle", this._id,event.target.value);
   }
 });

@@ -1,7 +1,24 @@
 <template name="header">
     {{#if currentUser}}
         <p>Welcome {{currentUser.username}}! You're logged in!</p>
-        {{> searchForm}}
+        {{#contentWrapper}}
+            <div>
+                <a href="{{pathFor 'home' }}" class="btn">home</a>
+            </div>
+            <div>
+                <a href="{{pathFor 'lists' }}" class="btn">lists</a>
+            </div>
+            <div>
+                <a href="{{pathFor 'ingredients' }}" class="btn">ingredients</a>
+            </div>
+            <div>
+                <a href="/about" class="btn">about</a>
+            </div>
+            <div>
+                <a href="#" class="logout">Logout</a>
+            </div>
+        {{/contentWrapper}}
+        <!--{{> searchForm}}-->
     {{else}}
         <p>Please login or create user</p>
     {{/if}}

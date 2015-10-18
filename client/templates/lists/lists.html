@@ -20,7 +20,7 @@
                 <div>
                     {{title}}<i>{{index}}</i>
                     <form>
-                        <a href="{{urlFor '/lists/:id' id=_id}}">show</a>
+                        <a href="/lists/{{_id}}">show</a>
                         <a class="remove-list-element">remove</a>
                         <input type="text" class="list-title-update" placeholder="{{title}}">
                         created by: {{author}}
@@ -33,7 +33,7 @@
         </div>
         <div id="allLists">
             {{#each lists}}
-                <div style="border-right: 4px solid {{color}}" >
+                <div style="border-right: 8px solid {{color}}" >
                     {{title}}
                     <form>
                         <a href="/lists/{{_id}}">show</a>
