@@ -11,5 +11,8 @@ Transitioner.setTransitions({
     'lists->ingredients': 'right-to-left',
     'ingredients->lists': 'left-to-right',
 
+    'lists->list': 'right-to-left',
+    'list->lists': 'left-to-right',
+
     'default': 'fade'
 });

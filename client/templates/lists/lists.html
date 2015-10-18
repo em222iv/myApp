@@ -1,49 +1,49 @@
 <template name="lists">
+
     <div class="lists">
+
+        <form id="filter">
+            {{> esInput index="lists" id="search" placeholder="Search..." }}
+            <a href="" class="addItem" >Add</a>
+        </form>
 
         {{#ifEsIsSearching index="lists" id="search"}}
             loading..
         {{/ifEsIsSearching}}
 
-        <!--ifisempty-->
-
-            <!-- show all -->
-
-        <!--else-->
-
-            <!-- show searchhits    -->
-
-        <!--endif-->
-
         {{#ifEsHasNoResults index="lists" id="search" logic="OR" }}
             <div class="no-results">No results found!</div>
         {{/ifEsHasNoResults}}
 
-        <ul id="searchLists">
+        <div id="searchLists">
             {{#esEach index="lists" id="search"}}
-                <li>
+                <div>
                     {{title}}<i>{{index}}</i>
                     <form>
-                        <a href="/lists/{{_id}}">show</a>
+                        <a href="{{urlFor '/lists/:id' id=_id}}">show</a>
                         <a class="remove-list-element">remove</a>
                         <input type="text" class="list-title-update" placeholder="{{title}}">
                         created by: {{author}}
                     </form>
-                </li>
+                </div>
+
+                {{else}}
+                Notjign
             {{/esEach}}
-        </ul>
-        <ul id="allLists">
+        </div>
+        <div id="allLists">
             {{#each lists}}
-                <li>
-                    {{title}}<i>{{index}}</i>
+                <div style="border-right: 4px solid {{color}}" >
+                    {{title}}
                     <form>
                         <a href="/lists/{{_id}}">show</a>
                         <a class="remove-list-element">remove</a>
                         <input type="text" class="list-title-update" placeholder="{{title}}">
                         created by: {{author}}
                     </form>
-                </li>
+                </div>
             {{/each}}
-        </ul>
+        </div>
     </div>
+
 </template>

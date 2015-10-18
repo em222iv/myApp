@@ -1,12 +1,43 @@
 <template name="ingredients">
+
     <div class="ingredients">
-        {{#each ingredients}}
 
-            <div class="ui mini button remove-ingredient">Rem</div>
-            <div> <input id="list-title" class="ingredient-title-update" type="text" placeholder="{{title}}"></div>
+        <form id="filter">
+            {{> esInput index="ingredients" id="search" placeholder="Search..." }}
+            <a href="" class="addItem" >Add</a>
+        </form>
 
-        {{else}}
-            No Ingredients
-        {{/each}}
+        {{#ifEsIsSearching index="ingredients" id="search"}}
+            loading..
+        {{/ifEsIsSearching}}
+
+        {{#ifEsHasNoResults index="ingredients" id="search" logic="OR" }}
+            <div class="no-results">No results found!</div>
+        {{/ifEsHasNoResults}}
+
+        <div id="searchIngredients">
+            {{#esEach index="ingredients" id="search"}}
+                <div>
+                    {{title}}
+                    <form>
+                        <div class="ui mini button remove-ingredient">Rem</div>
+                        <div> <input id="ingredient-title" class="ingredient-title-update" type="text" placeholder="{{title}}"></div>
+                    </form>
+                </div>
+            {{/esEach}}
+        </div>
+        <div id="allIngredients">
+            {{#each ingredients}}
+                <div>
+                    {{title}}
+                    <form>
+                        <div class="ui mini button remove-ingredient">Rem</div>
+                        <div> <input id="ingredient-title" class="ingredient-title-update" type="text" placeholder="{{title}}"></div>
+                    </form>
+                </div>
+            {{/each}}
+        </div>
+
     </div>
+
 </template>

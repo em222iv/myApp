@@ -2,13 +2,13 @@
 // PUBLICATIONS (For Documents collection)
 // ***************************************************************
 
-// LISTS SHOW
+// Ingredient
 // -------------------------------------------------------
 Meteor.publish('ingredient', function(id) {
   return Ingredients.find(id);
 });
 
-// LISTS INDEX
+// ingredients
 // -------------------------------------------------------
 Meteor.publish('ingredients', function() {
   return Ingredients.find();

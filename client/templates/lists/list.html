@@ -1,14 +1,68 @@
 <template name="list">
-    {{#if isSubReady}}
+
+    <div class="list">
+
+        <form id="filter">
+            {{> esInput index="ingredients" id="search" placeholder="Search..." }}
+            <a href="" class="addItem" >Add</a>
+        </form>
+
+        <a href="{{pathFor 'lists'}}">back</a>
+
         {{#with list}}
             <h2>List: {{title}}</h2>
-            {{#each ingredients}}
-                <a class="header">{{name}}</a>
-            {{else}}
-                No Ingredients
-            {{/each}}
         {{/with}}
-    {{else}}
-        loading...
-    {{/if}}
+
+        <h2>  Ingredients belonging to List</h2>
+        <div id="">
+            {{#each listIngredients}}
+                <div>
+                    {{title}}
+                    <form>
+                        <div id="{{_id}}" class="addToList">add to list</div>
+                        <div class="remove-ingredient">Rem</div>
+                        <div><input id="ingredient-title" class="ingredient-title-update" type="text" placeholder="{{title}}"></div>
+                    </form>
+                </div>
+            {{/each}}
+        </div>
+
+        <h2>Ingredietns</h2>
+        {{#ifEsIsSearching index="ingredients" id="search"}}
+            loading..
+        {{/ifEsIsSearching}}
+
+        {{#ifEsHasNoResults index="ingredients" id="search" logic="OR" }}
+            <div class="no-results">No results found!</div>
+        {{/ifEsHasNoResults}}
+
+        <div id="searchIngredients">
+
+            {{#esEach index="ingredients" id="search"}}
+                <div>
+                    {{title}}
+                    <form>
+                        <div class="addToList">add to list</div>
+                        <div class="remove-ingredient">Rem</div>
+                        <div> <input id="ingredient-title" class="ingredient-title-update" type="text" placeholder="{{title}}"></div>
+                    </form>
+                </div>
+            {{/esEach}}
+        </div>
+
+        <div id="allIngredients">
+            {{#each ingredients}}
+                <div>
+                    {{title}}
+                    <form>
+                        <div id="{{_id}}" class="addToList">add to list</div>
+                        <div class="remove-ingredient">Rem</div>
+                        <div><input id="ingredient-title" class="ingredient-title-update" type="text" placeholder="{{title}}"></div>
+                    </form>
+                </div>
+            {{/each}}
+        </div>
+
+    </div>
+
 </template>

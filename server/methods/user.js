@@ -16,6 +16,9 @@ Meteor.methods({
         return Accounts.createUser({
             username: user.username,
             email: user.email,
+            profile: [{
+                'colors': ['#00b8d4','#00e5ff','#0288d1','#81c784','#311b92','#ef6c00','#ff6e40','#ef9a9a']
+            }],
             password: user.password,
         });
     }

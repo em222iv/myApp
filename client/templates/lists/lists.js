@@ -1,8 +1,5 @@
 Template.lists.rendered = function() {
 
-  $("#search").attr("class","insertList");
-  $("#search").attr("index","lists");
-
   var instance = EasySearch.getComponentInstance(
       { id: 'search', index: 'lists' }
   );
@@ -28,9 +25,28 @@ Template.lists.helpers({
   lists: function(){
     return Lists.find({},{sort: {createdAt: -1}});
   },
+  collection: function(){
+    return {'title' :"lists"};
+  }
 });
 
 Template.lists.events({
+  'click .addItem': function (event) {
+    // Prevent default browser form submit
+    event.preventDefault();
+
+     Meteor.call("insertList", $("#search").val());
+    $("#search").val('');
+    $('#allLists').show();
+  },
+  'input #search': function (event) {
+    if(this._id,event.target.value.length > 0) {
+      $('#allLists').hide();
+    }
+    else{
+      $('#allLists').show();
+    }
+  },
   "click .remove-list-element": function (event) {
     // Prevent default browser form submit
     event.preventDefault();

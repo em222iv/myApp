@@ -1,11 +1,24 @@
 Template.ingredients.rendered = function() {
-  $("#search").attr("class","insertIngredient");
-  $("#search").attr("index","ingredients");;
-  //console.log($("#search"));
+
   var instance = EasySearch.getComponentInstance(
-      { id: 'search', index: 'lists' }
+      { id: 'search', index: 'ingredients' }
   );
   instance.clear();
+
+  var editableList1 = Sortable.create(allIngredients, {
+    group: {
+      name:"allIngredients",
+      put: ['searchIngredients'],
+      pull: 'pull'
+    }
+  });
+  var editableList2 = Sortable.create(searchIngredients, {
+    group:{
+      name: 'searchIngredients',
+      put: ['allIngredients'],
+      pull: 'pull'
+    }
+  });
 };
 
 
@@ -16,11 +29,24 @@ Template.ingredients.helpers({
 });
 
 Template.ingredients.events({
-  "click .addItem": function (event) {
+  'click .addItem': function (event) {
     // Prevent default browser form submit
     event.preventDefault();
-    console.log($("#search").value);
-    Meteor.call("insertIngredient",$("#search").value);
+    console.log('d');
+    Meteor.call("insertIngredient", $("#search").val());
+    $("#search").val('');
+    $('#allIngredients').show();
+  }, /**
+   * Created by erikmagnusson on 2015-10-17.
+   */
+  'input #search': function (event) {
+    if(this._id,event.target.value.length > 0) {
+      $('#allIngredients').hide();
+    }
+    else{
+
+      $('#allIngredients').show();
+    }
   },
   "click .remove-ingredient": function (event) {
     // Prevent default browser form submit
